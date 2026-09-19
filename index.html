@@ -323,28 +323,18 @@
   .team-wrap .sec-tag{background:rgba(255,255,255,0.12); color:#fff;}
   .team-wrap .sec-head h2{color:#fff;}
   .team-wrap .sec-head p{color:rgba(255,255,255,0.72);}
-  .team-track{
-    display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 4px 14px;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  .consultant-card{
+    background:#fff; border-radius:20px; padding:36px; max-width:380px; margin:0 auto;
+    display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center;
+    box-shadow:0 24px 50px -18px rgba(0,0,0,0.45);
   }
-  .team-track::-webkit-scrollbar{display:none;}
-  .team-card{
-    flex:0 0 200px; scroll-snap-align:start; background:#fff; border-radius:16px; padding:26px 18px;
-    text-align:center; box-shadow:0 24px 50px -18px rgba(0,0,0,0.45); transition:transform .3s ease;
+  .consultant-avatar{
+    width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:26px; color:#fff; background:var(--blue-dark); flex-shrink:0;
   }
-  .team-card:hover{transform:translateY(-5px);}
-  @media(min-width:768px){
-    .team-track{
-      display:grid; grid-template-columns:repeat(4,1fr); overflow:visible; padding:4px; gap:22px;
-    }
-    .team-card{flex:unset;}
-  }
-  .team-avatar{
-    width:74px; height:74px; border-radius:50%; margin:0 auto 16px; display:flex; align-items:center; justify-content:center;
-    font-weight:700; font-size:20px; color:#fff; background:var(--blue-dark);
-  }
-  .team-card h4{font-size:15px; font-weight:700; font-family:'Inter';}
-  .team-card span{font-size:12.5px; color:var(--gray); font-weight:600;}
+  .consultant-card h4{font-size:18px; font-weight:700; font-family:'Inter';}
+  .consultant-card span{font-size:13px; color:var(--gray); font-weight:600;}
+  .consultant-card .btn{margin-top:6px;}
 
   /* ---------- Testimonials ---------- */
   #depoimentos{background:var(--bg);}
@@ -453,7 +443,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
         Área do Cliente
       </a>
-      <a href="https://wa.me/5514996706208?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20simular%20um%20financiamento%20com%20a%20Vitta%20Marília!" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+      <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20simular%20um%20financiamento%20MCMV!" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.05c-.24.68-1.42 1.32-1.96 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.65-.18 1.33z"/></svg>
         <span>Simular Financiamento</span>
       </a>
@@ -471,7 +461,7 @@
   <a href="#sobre" class="mm-link">Sobre Nós</a>
   <a href="#depoimentos" class="mm-link">Depoimentos</a>
   <a href="cliente.html" class="mm-link" style="font-size:16px; color:var(--gray);">Área do Cliente</a>
-  <a href="https://wa.me/5514996706208" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:14px;">Falar no WhatsApp</a>
+  <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20vim%20pelo%20seu%20site%20da%20Vitta%20Maril%C3%ADa!" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:14px;">Falar com o Caio</a>
 </div>
 
 <!-- ================= HERO ================= -->
@@ -481,7 +471,7 @@
 
   <div class="container">
     <div class="hero-inner">
-      <div class="eyebrow"><span class="dot"></span> Construtora e Incorporadora em Marília-SP</div>
+      <div class="eyebrow"><span class="dot"></span> Atendimento direto com Caio Chicarello, Consultor Vitta Marília</div>
       <h1>Sonho de uma vida?<br>Com a <span class="accent">Vitta</span>, você conquista.</h1>
       <p class="lead">Empreendimentos modernos em Marília-SP com subsídio do Minha Casa Minha Vida, uso do seu FGTS e as condições mais fáceis de entrada da região.</p>
 
@@ -567,7 +557,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20OSK%20Residence." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20o%20OSK%20Residence." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -594,7 +584,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Vale%20Dos%20Sonhos." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20o%20Vale%20Dos%20Sonhos." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -621,7 +611,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Reserva%20Mirali." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20a%20Reserva%20Mirali." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -648,7 +638,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Reserva%20Flora." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20a%20Reserva%20Flora." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -675,7 +665,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20California%20Residence." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20o%20California%20Residence." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -702,7 +692,7 @@
           </div>
           <div class="cta-row">
             <span style="font-size:13px; color:var(--gray); font-weight:600;">Marília-SP</span>
-            <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Vitta%20Jardins." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
+            <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20saber%20mais%20sobre%20o%20Vitta%20Jardins." target="_blank" rel="noopener" class="prop-link">Conhecer Empreendimento
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -759,7 +749,7 @@
       <div class="why-card reveal">
         <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
         <h3>Minha Casa Minha Vida</h3>
-        <p>Você pode ter direito a até R$ 55 mil em subsídio do governo federal, reduzindo o valor financiado e as parcelas mensais — nossa equipe faz toda a simulação por você.</p>
+        <p>Você pode ter direito a até R$ 55 mil em subsídio do governo federal, reduzindo o valor financiado e as parcelas mensais — o Caio faz toda a simulação por você.</p>
       </div>
       <div class="why-card reveal">
         <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
@@ -775,15 +765,17 @@
 
     <div class="team-wrap" id="equipe">
       <div class="sec-head">
-        <span class="sec-tag">Nossa Equipe</span>
-        <h2>Atendimento humano, do primeiro contato até as chaves</h2>
-        <p>Corretores prontos para te acompanhar em cada etapa da conquista do seu imóvel.</p>
+        <span class="sec-tag">Atendimento Exclusivo</span>
+        <h2>Fale direto com o Caio Chicarello</h2>
+        <p>Consultor Vitta Marília — do primeiro contato até a entrega das chaves, você fala direto comigo, sem intermediários.</p>
       </div>
-      <div class="team-track">
-        <div class="team-card reveal"><div class="team-avatar">JR</div><h4>Julia Ribeiro</h4><span>Corretora de Imóveis</span></div>
-        <div class="team-card reveal"><div class="team-avatar" style="background:var(--gold);">CM</div><h4>Carlos Mendes</h4><span>Consultor de Vendas</span></div>
-        <div class="team-card reveal"><div class="team-avatar" style="background:var(--status-pronto);">AP</div><h4>Ana Paula</h4><span>Gerente Comercial</span></div>
-        <div class="team-card reveal"><div class="team-avatar" style="background:var(--charcoal-soft);">TS</div><h4>Thiago Souza</h4><span>Corretor de Imóveis</span></div>
+      <div class="consultant-card reveal">
+        <div class="consultant-avatar">CC</div>
+        <div>
+          <h4>Caio Chicarello</h4>
+          <span>Consultor Vitta Marília</span>
+        </div>
+        <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20vim%20pelo%20seu%20site%20e%20quero%20falar%20sobre%20um%20im%C3%B3vel%20da%20Vitta%20Maril%C3%ADa!" target="_blank" rel="noopener" class="btn btn-gold">Falar com o Caio</a>
       </div>
     </div>
   </div>
@@ -841,10 +833,10 @@
   <div class="cta-banner reveal">
     <div>
       <h3>Pronto para conquistar o seu apartamento?</h3>
-      <p>Fale agora com um especialista da Vitta e descubra em minutos quanto de subsídio você tem direito.</p>
+      <p>Fale agora com Caio Chicarello, consultor Vitta Marília, e descubra em minutos quanto de subsídio você tem direito.</p>
     </div>
     <div class="cta-side">
-      <a href="https://wa.me/5514996706208?text=Ol%C3%A1!%20Quero%20simular%20meu%20financiamento%20com%20a%20Vitta%20Marília." target="_blank" rel="noopener" class="btn btn-gold">Falar com Especialista</a>
+      <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20quero%20simular%20meu%20financiamento%20MCMV%20com%20a%20Vitta%20Maril%C3%ADa." target="_blank" rel="noopener" class="btn btn-gold">Falar com o Caio Agora</a>
     </div>
   </div>
 </section>
@@ -855,12 +847,12 @@
     <div class="footer-grid">
       <div>
         <div class="flogo"><div class="logo-badge"><div class="logo-badge-inner">V</div></div><b>Vitta Marília</b></div>
-        <p class="desc">Construtora e incorporadora focada em realizar o sonho da casa própria em Marília-SP, com facilidades do Minha Casa Minha Vida.</p>
+        <p class="desc">Atendimento exclusivo com Caio Chicarello, consultor Vitta Residencial em Marília-SP, especializado em Minha Casa Minha Vida, FGTS e financiamento facilitado.</p>
         <div class="social-row">
-          <a href="https://instagram.com/vittamarilia" target="_blank" rel="noopener" aria-label="Instagram">
+          <a href="https://www.instagram.com/vitta_caiochicarello/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
           </a>
-          <a href="https://wa.me/5514996706208" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20vim%20pelo%20site%20da%20Vitta%20Maril%C3%ADa!" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
           </a>
         </div>
@@ -884,7 +876,7 @@
         </div>
         <div class="foot-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          <span>(14) 99670-6208</span>
+          <span>(14) 99808-5630 — Caio Chicarello</span>
         </div>
         <div class="foot-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
@@ -907,7 +899,7 @@
       </div>
 
       <div>
-        <h4>Receba um contato</h4>
+        <h4>Receba um contato do Caio</h4>
         <form class="foot-form" id="leadForm">
           <input type="text" id="leadNome" placeholder="Seu nome" required>
           <input type="tel" id="leadTelefone" placeholder="Seu WhatsApp" required>
@@ -924,11 +916,11 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5514996706208?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20falar%20com%20um%20consultor%20da%20Vitta%20Marília!" target="_blank" rel="noopener" class="chat-float" aria-label="Fale com um consultor no WhatsApp">
+<a href="https://wa.me/5514998085630?text=Ol%C3%A1%20Caio%2C%20vim%20pelo%20seu%20site%20e%20quero%20falar%20sobre%20um%20im%C3%B3vel%20da%20Vitta%20Maril%C3%ADa!" target="_blank" rel="noopener" class="chat-float" aria-label="Fale com o Caio no WhatsApp">
   <span class="chat-icon">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.05c-.24.68-1.42 1.32-1.96 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.65-.18 1.33z"/></svg>
   </span>
-  <span class="chat-label">Fale com um Consultor</span>
+  <span class="chat-label">Falar com o Caio</span>
 </a>
 
 <div id="toast"></div>
@@ -1020,9 +1012,9 @@
     const nome = document.getElementById('leadNome').value.trim();
     const telefone = document.getElementById('leadTelefone').value.trim();
     const interesse = document.getElementById('leadInteresse').value.trim();
-    const msg = `Olá! Me chamo ${nome} (contato: ${telefone}) e tenho interesse em ${interesse || 'um imóvel da Vitta Marília'}. Vim pelo site!`;
-    window.open(`https://wa.me/5514996706208?text=${encodeURIComponent(msg)}`, '_blank');
-    showToast('Obrigado! Vamos te chamar no WhatsApp em instantes.');
+    const msg = `Olá Caio! Me chamo ${nome} (contato: ${telefone}) e tenho interesse em ${interesse || 'um imóvel da Vitta Marília'}. Vim pelo seu site!`;
+    window.open(`https://wa.me/5514998085630?text=${encodeURIComponent(msg)}`, '_blank');
+    showToast('Obrigado! O Caio vai te chamar no WhatsApp em instantes.');
     e.target.reset();
   });
 </script>
