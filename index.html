@@ -112,6 +112,11 @@
   .nav-links a{ font-size:14.5px; font-weight:600; color:var(--ink); position:relative; padding:4px 0; }
   .nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--gold); transition:width .3s ease; }
   .nav-links a:hover::after{width:100%;}
+  .nav-client-link{
+    display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--gray);
+    padding:8px 4px; transition:color .2s ease;
+  }
+  .nav-client-link:hover{color:var(--blue-dark);}
   .nav-cta{display:flex; align-items:center; gap:14px;}
   .burger{display:none; flex-direction:column; gap:5px; padding:10px; z-index:1200; background:transparent;}
   .burger span{width:24px; height:2.5px; background:var(--ink); border-radius:2px; transition:.3s;}
@@ -130,6 +135,7 @@
 
   @media(max-width:920px){
     .nav-links{display:none;}
+    .nav-client-link{display:none;}
     .nav-cta .btn-primary span{display:none;}
     .burger{display:flex;}
   }
@@ -240,6 +246,9 @@
   }
   .prop-body{padding:24px; display:flex; flex-direction:column; gap:14px; flex:1;}
   .prop-body h3{font-size:20px; font-weight:700; color:var(--ink);}
+  .prop-specs{display:flex; flex-wrap:wrap; gap:16px; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .prop-spec{display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:var(--ink);}
+  .prop-spec svg{color:var(--blue-dark); flex-shrink:0;}
   .prop-feats{display:flex; flex-wrap:wrap; gap:8px;}
   .feat-pill{
     font-size:12.5px; font-weight:600; color:var(--gray); background:var(--bg); padding:6px 12px 6px 10px;
@@ -267,29 +276,53 @@
   .why-card h3{font-size:19px; font-weight:700; margin-bottom:10px;}
   .why-card p{color:var(--gray); font-size:14.5px; line-height:1.65;}
 
-  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; margin-bottom:80px;}
-  @media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
-  .about-img{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); aspect-ratio:4/3;}
-  .about-img img{width:100%; height:100%; object-fit:cover; display:block;}
-  .about-img.is-logo{
-    background:none; box-shadow:none; overflow:visible; position:relative;
-    display:flex; align-items:center; justify-content:center;
+  /* ---------- Quem Somos (photo + video) ---------- */
+  .about-section{ position:relative; padding:110px 0; overflow:hidden; isolation:isolate; }
+  .about-section .about-bg{ position:absolute; inset:0; z-index:-2; background-size:cover; background-position:center; }
+  .about-section .about-overlay{
+    position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(115deg, rgba(6,9,18,0.90) 0%, rgba(6,9,18,0.78) 45%, rgba(6,9,18,0.6) 100%);
   }
-  .about-img.is-logo::before{
-    content:''; position:absolute; width:72%; aspect-ratio:1/1; border-radius:50%;
-    background:radial-gradient(circle, rgba(34,81,255,0.08) 0%, rgba(34,81,255,0) 72%);
+  .about-inner{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  @media(max-width:900px){.about-inner{grid-template-columns:1fr; gap:40px;}}
+  .about-logo-mini{
+    width:60px; height:60px; border-radius:50%; overflow:hidden; margin-bottom:22px;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.55);
   }
-  .about-img.is-logo img{
-    position:relative; width:auto; max-width:56%; height:auto; max-height:56%; object-fit:contain;
-    border-radius:50%; clip-path:circle(50%); -webkit-clip-path:circle(50%);
-    box-shadow:0 24px 48px -16px rgba(0,51,153,0.38);
+  .about-logo-mini img{width:100%; height:100%; object-fit:cover; display:block;}
+  .sec-tag-dark{background:rgba(255,255,255,0.14); color:#fff;}
+  .about-col-text h2{color:#fff; font-size:32px; margin:14px 0 18px;}
+  .about-col-text p{color:rgba(255,255,255,0.82); line-height:1.75; font-size:15.5px; margin-bottom:32px;}
+  @media(max-width:768px){.about-col-text h2{font-size:26px;}}
+  .about-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  .about-stat{
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:14px;
+    padding:18px; backdrop-filter:blur(6px);
   }
-  .about-text h2{font-size:30px; margin:14px 0 16px;}
-  .about-text p{color:var(--gray); line-height:1.75; font-size:15px;}
+  .about-stat strong{display:block; font-family:'Playfair Display'; font-size:24px; color:#D8B45A; margin-bottom:4px; font-weight:700;}
+  .about-stat span{font-size:12.5px; color:rgba(255,255,255,0.78); font-weight:600;}
+  .video-frame{
+    position:relative; width:100%; aspect-ratio:16/9; border-radius:var(--radius-lg); overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+  }
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
 
-  .team-wrap{ background:#EEF1FA; border-radius:var(--radius-lg); padding:50px 40px; }
+  /* ---------- MCMV badge ---------- */
+  .mcmv-badge{
+    display:flex; align-items:center; justify-content:center; gap:10px; max-width:560px; margin:0 auto 44px;
+    background:#EAEFFB; border:1px solid #D6E0F7; color:var(--blue-dark); font-size:13px; font-weight:700;
+    padding:12px 22px; border-radius:100px; text-align:center;
+  }
+  .mcmv-badge svg{flex-shrink:0;}
+
+  .team-wrap{
+    background:linear-gradient(160deg, #0A2540 0%, #071B30 100%);
+    border-radius:var(--radius-lg); padding:50px 40px;
+  }
   .team-wrap .sec-head{margin-bottom:38px;}
-  .team-carousel{position:relative; padding:0 8px;}
+  .team-wrap .sec-tag{background:rgba(255,255,255,0.12); color:#fff;}
+  .team-wrap .sec-head h2{color:#fff;}
+  .team-wrap .sec-head p{color:rgba(255,255,255,0.72);}
   .team-track{
     display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 4px 14px;
     -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -297,18 +330,15 @@
   .team-track::-webkit-scrollbar{display:none;}
   .team-card{
     flex:0 0 200px; scroll-snap-align:start; background:#fff; border-radius:16px; padding:26px 18px;
-    text-align:center; box-shadow:var(--shadow-soft); transition:transform .3s ease;
+    text-align:center; box-shadow:0 24px 50px -18px rgba(0,0,0,0.45); transition:transform .3s ease;
   }
   .team-card:hover{transform:translateY(-5px);}
-  .team-nav-btn{
-    position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%;
-    background:#fff; box-shadow:var(--shadow-soft); display:flex; align-items:center; justify-content:center;
-    color:var(--ink); z-index:2; flex-shrink:0;
+  @media(min-width:768px){
+    .team-track{
+      display:grid; grid-template-columns:repeat(4,1fr); overflow:visible; padding:4px; gap:22px;
+    }
+    .team-card{flex:unset;}
   }
-  .team-nav-btn:hover{color:var(--blue-dark);}
-  .team-nav-prev{left:-14px;}
-  .team-nav-next{right:-14px;}
-  @media(max-width:640px){ .team-nav-btn{display:none;} }
   .team-avatar{
     width:74px; height:74px; border-radius:50%; margin:0 auto 16px; display:flex; align-items:center; justify-content:center;
     font-weight:700; font-size:20px; color:#fff; background:var(--blue-dark);
@@ -358,6 +388,7 @@
   footer ul a:hover{color:#fff;}
   .foot-contact-item{display:flex; gap:10px; font-size:13.5px; margin-bottom:14px; line-height:1.5;}
   .foot-contact-item svg{flex-shrink:0; margin-top:2px; color:var(--gold);}
+  .foot-subgroup-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:#7A7F94; margin:18px 0 12px;}
 
   .foot-form{display:flex; flex-direction:column; gap:12px;}
   .foot-form input{
@@ -368,8 +399,26 @@
   .foot-form input:focus{border-color:var(--gold);}
   .foot-form button{width:100%; justify-content:center;}
 
-  .foot-bottom{ padding:26px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:13px; color:#7A7F94; }
+  .foot-bottom{
+    padding:26px 0 110px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px; text-align:center; font-size:13px; color:#7A7F94;
+  }
   .foot-bottom a{font-weight:700; color:var(--gold);}
+  @media(min-width:768px){ .foot-bottom{padding-bottom:90px;} }
+
+  /* ---------- Floating chat bar ---------- */
+  .chat-float{
+    position:fixed; bottom:24px; right:24px; z-index:900; display:flex; align-items:center; gap:10px;
+    background:#fff; color:var(--ink); padding:13px 20px 13px 13px; border-radius:100px;
+    box-shadow:var(--shadow-strong); border:1px solid var(--line); font-weight:700; font-size:13.5px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .chat-float:hover{transform:translateY(-3px); box-shadow:0 26px 50px -18px rgba(10,14,26,0.35);}
+  .chat-float .chat-icon{
+    width:34px; height:34px; border-radius:50%; background:#25D366; display:flex; align-items:center;
+    justify-content:center; color:#fff; flex-shrink:0;
+  }
+  @media(max-width:640px){ .chat-float .chat-label{display:none;} .chat-float{padding:13px;} }
 
   /* ---------- Reveal animation ---------- */
   .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1);}
@@ -400,6 +449,10 @@
       <a href="#depoimentos">Depoimentos</a>
     </div>
     <div class="nav-cta">
+      <a href="cliente.html" class="nav-client-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Área do Cliente
+      </a>
       <a href="https://wa.me/5514996706208?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20simular%20um%20financiamento%20com%20a%20Vitta%20Marília!" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.05c-.24.68-1.42 1.32-1.96 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.65-.18 1.33z"/></svg>
         <span>Simular Financiamento</span>
@@ -417,6 +470,7 @@
   <a href="#facilidades" class="mm-link">Facilidades MCMV</a>
   <a href="#sobre" class="mm-link">Sobre Nós</a>
   <a href="#depoimentos" class="mm-link">Depoimentos</a>
+  <a href="cliente.html" class="mm-link" style="font-size:16px; color:var(--gray);">Área do Cliente</a>
   <a href="https://wa.me/5514996706208" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:14px;">Falar no WhatsApp</a>
 </div>
 
@@ -466,7 +520,7 @@
       </div>
 
       <div class="stats-row">
-        <div class="stat-card reveal"><div class="num">+30 mil</div><div class="lbl">Sonhos Realizados</div></div>
+        <div class="stat-card reveal"><div class="num">+28 mil</div><div class="lbl">Sonhos Realizados</div></div>
         <div class="stat-card reveal"><div class="num">Até R$ 55 mil</div><div class="lbl">Subsídio MCMV</div></div>
         <div class="stat-card reveal"><div class="num" data-count="5">0</div><div class="lbl">Empreendimentos Ativos</div></div>
         <div class="stat-card reveal"><div class="num">100%</div><div class="lbl">Entrada Facilitada</div></div>
@@ -501,6 +555,11 @@
         </div>
         <div class="prop-body">
           <h3>OSK Residence</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>45 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>1 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sacada Gourmet</span>
@@ -523,6 +582,11 @@
         </div>
         <div class="prop-body">
           <h3>Vale Dos Sonhos</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>42 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>1 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Playground</span>
@@ -545,6 +609,11 @@
         </div>
         <div class="prop-body">
           <h3>Reserva Mirali</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2-3 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>58 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>2 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2-3 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Salão de Festas</span>
@@ -567,6 +636,11 @@
         </div>
         <div class="prop-body">
           <h3>Reserva Flora</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>44 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>1 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Espaço Pet</span>
@@ -589,6 +663,11 @@
         </div>
         <div class="prop-body">
           <h3>California Residence</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2-3 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>62 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>2 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2-3 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Academia</span>
@@ -611,6 +690,11 @@
         </div>
         <div class="prop-body">
           <h3>Vitta Jardins</h3>
+          <div class="prop-specs">
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>46 m²</span>
+            <span class="prop-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 011 1v1a5 5 0 01-5 5H8a5 5 0 01-5-5v-1a1 1 0 011-1z"/><path d="M6 12V6a2 2 0 012-2h1"/><line x1="4" y1="21" x2="4" y2="19"/><line x1="20" y1="21" x2="20" y2="19"/></svg>1 Banh.</span>
+          </div>
           <div class="prop-feats">
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6M2 18v2M22 18v2M2 12V8a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>2 Dorms</span>
             <span class="feat-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sacada</span>
@@ -630,6 +714,33 @@
   </div>
 </section>
 
+<!-- ================= QUEM SOMOS ================= -->
+<section id="sobre" class="about-section">
+  <div class="about-bg" aria-hidden="true" style="background-image:url('img/foto (6).jpg');"></div>
+  <div class="about-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-col-text reveal">
+        <div class="about-logo-mini"><img src="img/logo.jpg" alt="Vitta Residencial"></div>
+        <span class="sec-tag sec-tag-dark">Quem Somos</span>
+        <h2>Marília no coração, moradia no plano</h2>
+        <p>A Vitta Residencial é uma construtora e incorporadora dedicada a transformar o sonho da casa própria em realidade para famílias de Marília-SP. Unimos localização estratégica, qualidade construtiva e um atendimento próximo para simplificar cada etapa — do primeiro contato até a entrega das chaves.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>+15 anos</strong><span>Solidez no mercado</span></div>
+          <div class="about-stat"><strong>+28 mil</strong><span>Famílias que mudaram de vida</span></div>
+          <div class="about-stat"><strong>+190</strong><span>Empreendimentos lançados</span></div>
+          <div class="about-stat"><strong>+20</strong><span>Cidades atendidas</span></div>
+        </div>
+      </div>
+      <div class="about-col-video reveal">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/iIS4M8A6mIc?si=iQIF17cxulhsMYHQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FACILIDADES / POR QUE ESCOLHER ================= -->
 <section id="facilidades" class="section-pad">
   <div class="container">
@@ -639,13 +750,9 @@
       <p>Simplificamos o caminho até as chaves do seu apartamento novo.</p>
     </div>
 
-    <div class="about-grid reveal">
-      <div class="about-img is-logo"><img src="img/logo.jpg" alt="Logo Vitta Residencial"></div>
-      <div class="about-text">
-        <span class="sec-tag">Quem Somos</span>
-        <h2>Marília no coração, moradia no plano</h2>
-        <p>A Vitta Residencial é uma construtora e incorporadora dedicada a transformar o sonho da casa própria em realidade para famílias de Marília-SP. Unimos localização estratégica, qualidade construtiva e um atendimento próximo para simplificar cada etapa — do primeiro contato até a entrega das chaves.</p>
-      </div>
+    <div class="mcmv-badge reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      Programa oficial Minha Casa Minha Vida, regulamentado pela Caixa Econômica Federal
     </div>
 
     <div class="why-grid">
@@ -666,25 +773,17 @@
       </div>
     </div>
 
-    <div class="team-wrap" id="sobre">
+    <div class="team-wrap" id="equipe">
       <div class="sec-head">
         <span class="sec-tag">Nossa Equipe</span>
         <h2>Atendimento humano, do primeiro contato até as chaves</h2>
         <p>Corretores prontos para te acompanhar em cada etapa da conquista do seu imóvel.</p>
       </div>
-      <div class="team-carousel">
-        <button class="team-nav-btn team-nav-prev" id="teamPrev" aria-label="Anterior">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="team-track" id="teamTrack">
-          <div class="team-card reveal"><div class="team-avatar">JR</div><h4>Julia Ribeiro</h4><span>Corretora de Imóveis</span></div>
-          <div class="team-card reveal"><div class="team-avatar" style="background:var(--gold);">CM</div><h4>Carlos Mendes</h4><span>Consultor de Vendas</span></div>
-          <div class="team-card reveal"><div class="team-avatar" style="background:var(--status-pronto);">AP</div><h4>Ana Paula</h4><span>Gerente Comercial</span></div>
-          <div class="team-card reveal"><div class="team-avatar" style="background:var(--charcoal-soft);">TS</div><h4>Thiago Souza</h4><span>Corretor de Imóveis</span></div>
-        </div>
-        <button class="team-nav-btn team-nav-next" id="teamNext" aria-label="Próximo">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
+      <div class="team-track">
+        <div class="team-card reveal"><div class="team-avatar">JR</div><h4>Julia Ribeiro</h4><span>Corretora de Imóveis</span></div>
+        <div class="team-card reveal"><div class="team-avatar" style="background:var(--gold);">CM</div><h4>Carlos Mendes</h4><span>Consultor de Vendas</span></div>
+        <div class="team-card reveal"><div class="team-avatar" style="background:var(--status-pronto);">AP</div><h4>Ana Paula</h4><span>Gerente Comercial</span></div>
+        <div class="team-card reveal"><div class="team-avatar" style="background:var(--charcoal-soft);">TS</div><h4>Thiago Souza</h4><span>Corretor de Imóveis</span></div>
       </div>
     </div>
   </div>
@@ -791,6 +890,20 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
           <span>contato@vittamarilia.com.br</span>
         </div>
+
+        <div class="foot-subgroup-label">Atendimento Vitta Residencial</div>
+        <div class="foot-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>0800 761 7102 (WhatsApp / Comercial)</span>
+        </div>
+        <div class="foot-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          <span>sac@vittaresidencial.com.br</span>
+        </div>
+        <div class="foot-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>Segunda a Sexta, das 08h às 18h</span>
+        </div>
       </div>
 
       <div>
@@ -811,6 +924,13 @@
   </div>
 </footer>
 
+<a href="https://wa.me/5514996706208?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20falar%20com%20um%20consultor%20da%20Vitta%20Marília!" target="_blank" rel="noopener" class="chat-float" aria-label="Fale com um consultor no WhatsApp">
+  <span class="chat-icon">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.05c-.24.68-1.42 1.32-1.96 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.65-.18 1.33z"/></svg>
+  </span>
+  <span class="chat-label">Fale com um Consultor</span>
+</a>
+
 <div id="toast"></div>
 
 <script>
@@ -823,10 +943,6 @@
   burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
   document.querySelectorAll('.mm-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  const teamTrack = document.getElementById('teamTrack');
-  document.getElementById('teamPrev').addEventListener('click', () => teamTrack.scrollBy({ left: -230, behavior: 'smooth' }));
-  document.getElementById('teamNext').addEventListener('click', () => teamTrack.scrollBy({ left: 230, behavior: 'smooth' }));
 
   const revealEls = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {

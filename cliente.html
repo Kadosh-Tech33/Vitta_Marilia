@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Área do Cliente | Vitta Fácil - Vitta Residencial</title>
+<meta name="description" content="Portal do Cliente Vitta Residencial. Acompanhe sua obra, boletos e documentos no Vitta Fácil.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2251FF;
+    --blue-dark:#003399;
+    --blue-darker:#001c66;
+    --gold:#B08D2E;
+    --gold-dark:#8A6F22;
+    --ink:#1A1D29;
+    --gray:#5B6172;
+    --gray-light:#8A90A3;
+    --bg:#F6F7FC;
+    --line:#E7E9F3;
+    --radius-lg:26px;
+    --shadow-soft:0 10px 26px -14px rgba(18,20,31,0.16);
+    --shadow-strong:0 22px 46px -18px rgba(10,14,26,0.28);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif; color:var(--ink); background:var(--bg);
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+  h1,h2{font-family:'Playfair Display', serif; font-weight:700;}
+  a{text-decoration:none; color:inherit;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+  img{max-width:100%; display:block;}
+
+  .login-wrap{ display:grid; grid-template-columns:1.05fr 1fr; min-height:100vh; }
+  @media(max-width:900px){ .login-wrap{grid-template-columns:1fr;} }
+
+  /* ---------- Visual panel ---------- */
+  .login-visual{ position:relative; overflow:hidden; isolation:isolate; display:flex; align-items:center; padding:60px; }
+  .login-visual-bg{ position:absolute; inset:0; z-index:-2; background-image:url('img/foto (7).jpg'); background-size:cover; background-position:center; }
+  .login-visual-overlay{
+    position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(160deg, rgba(0,25,90,0.92) 0%, rgba(6,9,18,0.88) 100%);
+  }
+  .login-visual-content{ color:#fff; max-width:440px; }
+  .login-logo{ display:inline-flex; align-items:center; gap:12px; margin-bottom:48px; }
+  .login-logo-badge{
+    width:46px; height:46px; border-radius:50%; background:var(--blue-dark); border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:17px; flex-shrink:0;
+  }
+  .login-logo b{ font-size:17px; font-weight:800; color:#fff; display:block; }
+  .login-logo span{ font-size:10.5px; color:rgba(255,255,255,0.7); font-weight:600; letter-spacing:.4px; }
+
+  .login-visual h1{ font-size:34px; line-height:1.25; margin-bottom:18px; }
+  .login-visual h1 .accent{ color:#D8B45A; font-style:italic; }
+  .login-visual p{ font-size:15px; line-height:1.7; color:rgba(255,255,255,0.78); }
+  @media(max-width:900px){
+    .login-visual{padding:44px 32px; min-height:260px;}
+    .login-visual h1{font-size:26px;}
+    .login-visual p{display:none;}
+  }
+
+  /* ---------- Form panel ---------- */
+  .login-form-panel{ display:flex; align-items:center; justify-content:center; padding:48px 24px; }
+  .login-form-card{ width:100%; max-width:400px; }
+  .portal-badge{
+    display:inline-flex; align-items:center; gap:8px; background:#EAEFFB; color:var(--blue-dark);
+    font-size:12px; font-weight:700; padding:8px 16px; border-radius:100px; margin-bottom:26px;
+  }
+  .login-form-card h2{ font-size:28px; margin-bottom:8px; }
+  .login-sub{ color:var(--gray); font-size:14.5px; margin-bottom:32px; }
+  .login-sub strong{ color:var(--ink); }
+
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:12.5px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+  .field input{
+    width:100%; padding:14px 16px; border-radius:10px; border:1.5px solid var(--line);
+    font-size:14.5px; font-family:inherit; outline:none; transition:border-color .2s ease;
+    background:#fff; color:var(--ink);
+  }
+  .field input:focus{ border-color:var(--blue-dark); }
+
+  .login-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:26px; gap:12px; }
+  .checkbox{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--gray); font-weight:600; }
+  .checkbox input{ width:16px; height:16px; accent-color:var(--blue-dark); }
+  .link-muted{ font-size:13px; font-weight:700; color:var(--blue-dark); white-space:nowrap; }
+  .link-muted:hover{ text-decoration:underline; }
+
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    padding:15px 20px; border-radius:10px; font-weight:700; font-size:14.5px;
+    transition:all .25s ease;
+  }
+  .btn-primary{ background:var(--blue-dark); color:#fff; box-shadow:0 10px 22px -10px rgba(0,51,153,0.5); }
+  .btn-primary:hover{ background:var(--blue-darker); transform:translateY(-2px); }
+  .btn-outline{ background:#fff; border:1.5px solid var(--line); color:var(--ink); margin-top:12px; }
+  .btn-outline:hover{ border-color:var(--blue-dark); color:var(--blue-dark); }
+
+  .login-divider{ display:flex; align-items:center; gap:14px; margin:28px 0 18px; color:var(--gray-light); font-size:12.5px; font-weight:600; }
+  .login-divider::before, .login-divider::after{ content:''; flex:1; height:1px; background:var(--line); }
+
+  .back-link{
+    display:flex; align-items:center; justify-content:center; gap:8px; margin-top:28px;
+    font-size:13.5px; font-weight:700; color:var(--gray);
+  }
+  .back-link:hover{ color:var(--blue-dark); }
+
+  #toast{
+    position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(100px); z-index:2000;
+    background:var(--ink); color:#fff; padding:16px 26px; border-radius:12px; font-size:14px; font-weight:600;
+    box-shadow:var(--shadow-strong); transition:transform .4s cubic-bezier(.4,0,.2,1); display:flex; align-items:center; gap:10px;
+    max-width:90vw; text-align:center;
+  }
+  #toast.show{ transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="login-wrap">
+  <div class="login-visual">
+    <div class="login-visual-bg" aria-hidden="true"></div>
+    <div class="login-visual-overlay" aria-hidden="true"></div>
+    <div class="login-visual-content">
+      <a href="index.html" class="login-logo">
+        <div class="login-logo-badge">V</div>
+        <div><b>Vitta Marília</b><span>#VaiDeVitta</span></div>
+      </a>
+      <h1>Sonho de uma vida?<br>Com a <span class="accent">Vitta</span>, você conquista.</h1>
+      <p>Acesse o Vitta Fácil e acompanhe cada etapa da sua conquista: boletos, documentos e o andamento da sua obra, tudo em um só lugar.</p>
+    </div>
+  </div>
+
+  <div class="login-form-panel">
+    <div class="login-form-card">
+      <span class="portal-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Portal do Cliente — Acompanhe sua obra, boletos e documentos
+      </span>
+      <h2>Área do Cliente</h2>
+      <p class="login-sub">Entre com seus dados para acessar o <strong>Vitta Fácil</strong>.</p>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginId">CPF ou E-mail</label>
+          <input type="text" id="loginId" placeholder="000.000.000-00 ou seuemail@exemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="loginSenha">Senha</label>
+          <input type="password" id="loginSenha" placeholder="Digite sua senha" required>
+        </div>
+        <div class="login-row">
+          <label class="checkbox"><input type="checkbox"> Lembrar de mim</label>
+          <a href="#" class="link-muted" id="forgotLink">Esqueceu sua senha?</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar no Vitta Fácil</button>
+      </form>
+
+      <div class="login-divider"><span>ou</span></div>
+
+      <a href="#" class="btn btn-outline" id="firstAccessLink">Primeiro Acesso</a>
+
+      <a href="index.html" class="back-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar para o Site Principal
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3400);
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('Portal em demonstração — o acesso ao Vitta Fácil ainda não está conectado a um sistema real.');
+  });
+  document.getElementById('forgotLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Página de recuperação de senha em breve.');
+  });
+  document.getElementById('firstAccessLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Fluxo de primeiro acesso em breve.');
+  });
+</script>
+</body>
+</html>
